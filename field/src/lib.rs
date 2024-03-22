@@ -4,6 +4,16 @@
 #![deny(rustdoc::broken_intra_doc_links)]
 #![deny(missing_debug_implementations)]
 #![feature(specialization)]
+#![cfg_attr(
+    all(
+        target_feature = "avx512bw",
+        target_feature = "avx512cd",
+        target_feature = "avx512dq",
+        target_feature = "avx512f",
+        target_feature = "avx512vl"
+    ),
+    feature(stdarch_x86_avx512)
+)]
 #![cfg_attr(not(test), no_std)]
 #![cfg(not(test))]
 extern crate alloc;
